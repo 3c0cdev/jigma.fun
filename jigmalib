@@ -1,13 +1,15 @@
+    -- (WARNING: This Repository is Licensed! You are not permitted to use/copy this User Interface library)
 local library = { 
 	flags = { }, 
 	items = { } 
 }
 
+-- Services
 local players = game:GetService("Players")
 local uis = game:GetService("UserInputService")
 local runservice = game:GetService("RunService")
 local tweenservice = game:GetService("TweenService")
-local marketplaceservice = game:GetService("MarketplaceService")
+-- local marketplaceservice = game:GetService("MarketplaceService")
 local textservice = game:GetService("TextService")
 local coregui = game:GetService("CoreGui")
 local httpservice = game:GetService("HttpService")
@@ -17,30 +19,38 @@ local mouse = player:GetMouse()
 local camera = game.Workspace.CurrentCamera
 
 library.theme = {
-    fontsize = 15,
-    titlesize = 15,
+    fontsize = 25,
+    titlesize = 18,
     font = Enum.Font.Code,
     background = "rbxassetid://0",
     tilesize = 90,
     cursor = false,
-    cursorimg = "https://t0.rbxcdn.com/42f66da98c40252ee151326a82aab51f",
-    backgroundcolor = Color3.fromRGB(20, 20, 20),
-    tabstextcolor = Color3.fromRGB(225,225,225),
-    bordercolor = Color3.fromRGB(225, 225, 225),
-    accentcolor = Color3.fromRGB(225,225,225),
-    accentcolor2 = Color3.fromRGB(88,65,108),
-    outlinecolor = Color3.fromRGB(20,20,20),
-    outlinecolor2 = Color3.fromRGB(30,30,30),--119, 64, 167
-    sectorcolor = Color3.fromRGB(30, 30, 30),
-    toptextcolor = Color3.fromRGB(225, 225, 225),
-    topheight = 60,
-    topcolor = Color3.fromRGB(30, 30, 30),
-    topcolor2 = Color3.fromRGB(12,12,12), -- Color3.fromRGB(12, 12, 12),
-    buttoncolor = Color3.fromRGB(49, 49, 49),
-    buttoncolor2 = Color3.fromRGB(29,29,29),
-    itemscolor = Color3.fromRGB(170, 170, 170),
-    itemscolor2 = Color3.fromRGB(255,255,255)
+    cursorimg = "https://i.pinimg.com/564x/02/48/18/0248185c3693b0e51e7a2db57753c497.jpg",
+backgroundcolor = Color3.fromRGB(40, 30, 40),
+tabstextcolor = Color3.fromRGB(255, 240, 250),
+bordercolor = Color3.fromRGB(80, 70, 80),
+accentcolor = Color3.fromRGB(150, 100, 150),
+accentcolor2 = Color3.fromRGB(120, 80, 120),
+outlinecolor = Color3.fromRGB(80, 70, 80),
+outlinecolor2 = Color3.fromRGB(60, 50, 60),
+sectorcolor = Color3.fromRGB(60, 50, 60),
+toptextcolor = Color3.fromRGB(255, 255, 255),
+topheight = 55,
+topcolor = Color3.fromRGB(60, 50, 60),
+topcolor2 = Color3.fromRGB(60, 50, 60),
+buttoncolor = Color3.fromRGB(90, 80, 90),
+buttoncolor2 = Color3.fromRGB(80, 70, 80),
+itemscolor = Color3.fromRGB(240, 220, 240),
+itemscolor2 = Color3.fromRGB(250, 230, 250)
 }
+
+AccentColors = {
+    Accent1 = Color3.fromRGB(252, 255, 255),
+    Accent2 = Color3.fromRGB(255, 255, 255)
+}
+library.theme.accentcolor = AccentColors.Accent1
+library.theme.accentcolor2 = AccentColors.Accent2
+
 
 if library.theme.cursor and Drawing then
     local success = pcall(function() 
@@ -70,7 +80,7 @@ if library.theme.cursor and Drawing then
 end
 
 function library:CreateWatermark(name, position)
-    local gamename = marketplaceservice:GetProductInfo(game.PlaceId).Name
+    local gamename = game.Name -- marketplaceservice:GetProductInfo(game.PlaceId).Name
     local watermark = { }
     watermark.Visible = true
     watermark.text = " " .. name:gsub("{game}", gamename):gsub("{fps}", "0 FPS") .. " "
@@ -217,7 +227,7 @@ function library:CreateWindow(name, size, hidebutton)
 
     window.name = name or ""
     window.size = UDim2.fromOffset(size.X, size.Y) or UDim2.fromOffset(492, 598)
-    window.hidebutton = hidebutton or Enum.KeyCode.RightShift
+    window.hidebutton = hidebutton -- or Enum.KeyCode.RightShift
     window.theme = library.theme
 
     local updateevent = Instance.new("BindableEvent")
@@ -3398,16 +3408,16 @@ function library:CreateWindow(name, size, hidebutton)
         function tab:CreateConfigSystem(side)
             local configSystem = { }
 
-            configSystem.configFolder = "aoeware/" .. tostring(game.PlaceId)
+            configSystem.configFolder = "FemWare"
             if (not isfolder(configSystem.configFolder)) then
                 makefolder(configSystem.configFolder)
             end
 
-            configSystem.sector = tab:CreateSector("Configs", side or "left")
+            configSystem.sector = tab:CreateSector("Loadout Config", side or "left")
 
             local ConfigName = configSystem.sector:AddTextbox("Config Name", "", ConfigName, function() end, "")
             local default = tostring(listfiles(configSystem.configFolder)[1] or ""):gsub(configSystem.configFolder .. "\\", ""):gsub(".txt", "")
-            local Config = configSystem.sector:AddDropdown("Configs", {}, default, false, function() end, "")
+            local Config = configSystem.sector:AddDropdown("Loadouts", {}, default, false, function() end, "")
             for i,v in pairs(listfiles(configSystem.configFolder)) do
                 if v:find(".txt") then
                     Config:Add(tostring(v):gsub(configSystem.configFolder .. "\\", ""):gsub(".txt", ""))
@@ -3523,6 +3533,7 @@ function library:CreateWindow(name, size, hidebutton)
 
             return configSystem
         end
+	
 
         --[[ not finished lol
         function tab:CreatePlayerlist(name)
@@ -3649,3 +3660,5 @@ function library:CreateWindow(name, size, hidebutton)
 
     return window
 end
+
+return library
