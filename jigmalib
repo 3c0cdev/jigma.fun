@@ -20,7 +20,7 @@ local camera = game.Workspace.CurrentCamera
 
 library.theme = {
     fontsize = 25,
-    titlesize = 18,
+    titlesize = 10,
     font = Enum.Font.Code,
     background = "rbxassetid://0",
     tilesize = 90,
