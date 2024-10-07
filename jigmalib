@@ -3447,7 +3447,7 @@ function library:CreateWindow(name, size, hidebutton)
                         end
                     end
     
-                    writefile(Config:Get() .. ".txt", httpservice:JSONEncode(config))
+                    writefile(configSystem.configFolder .. "/" .. ConfigName:Get() .. ".txt", httpservice:JSONEncode(config))
     
                     for i,v in pairs(listfiles(configSystem.configFolder)) do
                         if v:find(".txt") then
