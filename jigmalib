@@ -1,4 +1,4 @@
--- (WARNING: This Repository is Licensed! You are not permitted to use/copy this User Interface library)
+        -- (WARNING: This Repository is Licensed! You are not permitted to use/copy this User Interface library)
 local library = { 
 	flags = { }, 
 	items = { } 
@@ -21,7 +21,7 @@ local camera = game.Workspace.CurrentCamera
 library.theme = {
     fontsize = 16,
     titlesize = 18,
-    font = Enum.Font.Code,
+    font = Enum.Font.Nunito,
     background = "rbxassetid://0",
     tilesize = 90,
     cursor = false,
