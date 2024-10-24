@@ -1,4 +1,4 @@
-    -- (WARNING: This Repository is Licensed! You are not permitted to use/copy this User Interface library)
+-- (WARNING: This Repository is Licensed! You are not permitted to use/copy this User Interface library)
 local library = { 
 	flags = { }, 
 	items = { } 
@@ -25,28 +25,28 @@ library.theme = {
     background = "rbxassetid://0",
     tilesize = 90,
     cursor = false,
-    cursorimg = "https://i.pinimg.com/564x/02/48/18/0248185c3693b0e51e7a2db57753c497.jpg",
-backgroundcolor = Color3.fromRGB(40, 30, 40),
-tabstextcolor = Color3.fromRGB(255, 240, 250),
-bordercolor = Color3.fromRGB(80, 70, 80),
-accentcolor = Color3.fromRGB(150, 100, 150),
-accentcolor2 = Color3.fromRGB(120, 80, 120),
-outlinecolor = Color3.fromRGB(80, 70, 80),
-outlinecolor2 = Color3.fromRGB(60, 50, 60),
-sectorcolor = Color3.fromRGB(60, 50, 60),
-toptextcolor = Color3.fromRGB(255, 255, 255),
-topheight = 55,
-topcolor = Color3.fromRGB(60, 50, 60),
-topcolor2 = Color3.fromRGB(60, 50, 60),
-buttoncolor = Color3.fromRGB(90, 80, 90),
-buttoncolor2 = Color3.fromRGB(80, 70, 80),
-itemscolor = Color3.fromRGB(240, 220, 240),
-itemscolor2 = Color3.fromRGB(250, 230, 250)
+    cursorimg = "",
+backgroundcolor = Color3.fromRGB(5, 5, 5),  -- Darker background for a more pronounced effect
+tabstextcolor = Color3.fromRGB(201, 201, 201),  -- White for tab text for contrast
+bordercolor = Color3.fromRGB(20, 20, 20),  -- Darker gray for borders
+accentcolor = Color3.fromRGB(60, 60, 80),  -- Darker muted blue-gray accent
+accentcolor2 = Color3.fromRGB(40, 40, 60),  -- Even darker blue-gray accent
+outlinecolor = Color3.fromRGB(20, 20, 20),  -- Consistent dark gray for outlines
+outlinecolor2 = Color3.fromRGB(15, 15, 15),  -- Slightly darker outline
+sectorcolor = Color3.fromRGB(15, 15, 15),  -- Same as outline color 2
+toptextcolor = Color3.fromRGB(255, 255, 255),  -- White for top text
+topheight = 45,  -- Fixed height for the top section
+topcolor = Color3.fromRGB(15, 15, 15),  -- Darker top color
+topcolor2 = Color3.fromRGB(15, 15, 15),  -- Consistent with top color
+buttoncolor = Color3.fromRGB(30, 30, 30),  -- Darker gray for buttons
+buttoncolor2 = Color3.fromRGB(20, 20, 20),  -- Same as border for button 2
+itemscolor = Color3.fromRGB(100, 100, 100),  -- Darker muted gray for items
+itemscolor2 = Color3.fromRGB(110, 110, 110)  -- Slightly lighter for second items color
 }
 
 AccentColors = {
-    Accent1 = Color3.fromRGB(252, 255, 255),
-    Accent2 = Color3.fromRGB(255, 255, 255)
+    Accent1 = Color3.fromRGB(170, 170, 170),
+    Accent2 = Color3.fromRGB(170, 170, 170)
 }
 library.theme.accentcolor = AccentColors.Accent1
 library.theme.accentcolor2 = AccentColors.Accent2
@@ -135,6 +135,7 @@ function library:CreateWatermark(name, position)
     watermark.label.ZIndex = 6
     watermark.label.Visible = watermark.Visible
     watermark.label.Text = watermark.text
+    watermark.label.RichText = true
     watermark.label.TextColor3 = Color3.fromRGB(255, 255, 255)
     watermark.label.TextSize = 15
     watermark.label.TextStrokeTransparency = 0.000
@@ -636,7 +637,7 @@ function library:CreateWindow(name, size, hidebutton)
             sector.LabelBackFrame.ZIndex = 5
             sector.LabelBackFrame.Size = UDim2.fromOffset(sector.Label.Size.X.Offset, 10)
             sector.LabelBackFrame.BorderSizePixel = 0
-            sector.LabelBackFrame.BackgroundColor3 = Color3.fromRGB(60, 50, 60)
+            sector.LabelBackFrame.BackgroundColor3 = window.theme.sectorcolor
             sector.LabelBackFrame.Position = UDim2.fromOffset(sector.Label.Position.X.Offset, sector.BlackOutline2.Position.Y.Offset)
 
             sector.Items = Instance.new("Frame", sector.Main) 
