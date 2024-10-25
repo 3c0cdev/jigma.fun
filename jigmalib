@@ -26,22 +26,22 @@ library.theme = {
     tilesize = 90,
     cursor = false,
     cursorimg = "",
-backgroundcolor = Color3.fromRGB(5, 5, 5),  -- Darker background for a more pronounced effect
-tabstextcolor = Color3.fromRGB(201, 201, 201),  -- White for tab text for contrast
-bordercolor = Color3.fromRGB(20, 20, 20),  -- Darker gray for borders
-accentcolor = Color3.fromRGB(60, 60, 80),  -- Darker muted blue-gray accent
-accentcolor2 = Color3.fromRGB(40, 40, 60),  -- Even darker blue-gray accent
-outlinecolor = Color3.fromRGB(20, 20, 20),  -- Consistent dark gray for outlines
-outlinecolor2 = Color3.fromRGB(15, 15, 15),  -- Slightly darker outline
-sectorcolor = Color3.fromRGB(15, 15, 15),  -- Same as outline color 2
-toptextcolor = Color3.fromRGB(255, 255, 255),  -- White for top text
-topheight = 45,  -- Fixed height for the top section
-topcolor = Color3.fromRGB(15, 15, 15),  -- Darker top color
-topcolor2 = Color3.fromRGB(15, 15, 15),  -- Consistent with top color
-buttoncolor = Color3.fromRGB(30, 30, 30),  -- Darker gray for buttons
-buttoncolor2 = Color3.fromRGB(20, 20, 20),  -- Same as border for button 2
-itemscolor = Color3.fromRGB(100, 100, 100),  -- Darker muted gray for items
-itemscolor2 = Color3.fromRGB(110, 110, 110)  -- Slightly lighter for second items color
+backgroundcolor = Color3.fromRGB(5, 5, 5),
+tabstextcolor = Color3.fromRGB(201, 201, 201),
+bordercolor = Color3.fromRGB(20, 20, 20),
+accentcolor = Color3.fromRGB(60, 60, 80),
+accentcolor2 = Color3.fromRGB(40, 40, 60),
+outlinecolor = Color3.fromRGB(20, 20, 20),
+outlinecolor2 = Color3.fromRGB(15, 15, 15),
+sectorcolor = Color3.fromRGB(15, 15, 15),
+toptextcolor = Color3.fromRGB(255, 255, 255),
+topheight = 45,
+topcolor = Color3.fromRGB(15, 15, 15),
+topcolor2 = Color3.fromRGB(15, 15, 15),
+buttoncolor = Color3.fromRGB(30, 30, 30),
+buttoncolor2 = Color3.fromRGB(20, 20, 20),
+itemscolor = Color3.fromRGB(100, 100, 100),
+itemscolor2 = Color3.fromRGB(110, 110, 110)
 }
 
 AccentColors = {
@@ -1347,7 +1347,7 @@ function library:CreateWindow(name, size, hidebutton)
                     return dropdown
                 end
 
-                function toggle:AddTextbox(default, callback, flag)
+                function toggle:AddTextbox(default, callback, clearonfocus, flag)
                     local textbox = { }
                     textbox.callback = callback or function() end
                     textbox.default = default
@@ -1357,7 +1357,7 @@ function library:CreateWindow(name, size, hidebutton)
                     textbox.Holder = Instance.new("Frame", sector.Items)
                     textbox.Holder.Name = "holder"
                     textbox.Holder.ZIndex = 5
-                    textbox.Holder.Size = UDim2.fromOffset(sector.Main.Size.X.Offset - 12, 14)
+                    textbox.Holder.Size = UDim2.fromOffset(sector.Main.Size.X.Offset - 10, 14)
                     textbox.Holder.BorderSizePixel = 0
                     textbox.Holder.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     
@@ -1372,7 +1372,7 @@ function library:CreateWindow(name, size, hidebutton)
                     textbox.Main.Font = window.theme.font
                     textbox.Main.Name = "textbox"
                     textbox.Main.MultiLine = false
-                    textbox.Main.ClearTextOnFocus = false
+                    textbox.Main.ClearTextOnFocus = clearonfocus or false
                     textbox.Main.ZIndex = 5
                     textbox.Main.TextScaled = true
                     textbox.Main.Size = textbox.Holder.Size
