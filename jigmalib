@@ -1347,7 +1347,7 @@ function library:CreateWindow(name, size, hidebutton)
                     return dropdown
                 end
 
-                function toggle:AddTextbox(default, callback, clearonfocus, flag)
+                function toggle:AddTextbox(default, callback, flag)
                     local textbox = { }
                     textbox.callback = callback or function() end
                     textbox.default = default
@@ -1372,7 +1372,7 @@ function library:CreateWindow(name, size, hidebutton)
                     textbox.Main.Font = window.theme.font
                     textbox.Main.Name = "textbox"
                     textbox.Main.MultiLine = false
-                    textbox.Main.ClearTextOnFocus = clearonfocus
+                    textbox.Main.ClearTextOnFocus = true
                     textbox.Main.ZIndex = 5
                     textbox.Main.TextScaled = true
                     textbox.Main.Size = textbox.Holder.Size
